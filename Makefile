@@ -273,6 +273,9 @@ ifeq ($(HOSTARCH),$(ARCH))
 CROSS_COMPILE ?=
 endif
 
+ARCH = arm
+CROSS_COMPILE = /opt/gcc-linaro-12.2.1-2022.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+
 KCONFIG_CONFIG	?= .config
 export KCONFIG_CONFIG
 
