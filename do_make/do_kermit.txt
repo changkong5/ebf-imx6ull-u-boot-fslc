@@ -1,0 +1,44 @@
+
+# U-boot
+# loadb 0x80800000
+
+
+# Ubuntu
+# sudo kermit
+# Ctrl + \   + c
+# sned /path/filename
+
+
+
+
+~/.kermrc: 
+set line /dev/ttyS0
+set speed 115200
+set carrier-watch off
+set handshake none
+set flow-control none
+robust
+set file type bin
+set file name lit
+set rec pack 1000
+set send pack 1000
+set window 5
+
+
+(3)具体使用方法
+使用以下命令：
+connect
+可以连上开发板，这一些与minicom是一样的，而且感觉速度更快些。
+(4)切换
+按下 Ctrl + \  , 再按 C 可以跳回kermit。
+跳回串口控制，可以输入c,即 connect即可。
+(5)发送文件
+kermit中输入connect后,转入了u-boot串口界面。
+输入Loadb 0x00300000,启动开发板上的kermit协议。
+按下 Ctrl + \  , 再按 C, 切换到kermit。
+输入命令：send /home/share/uImage.pkg
+kermit开始传送，并且显示一个传送界面，并动态显示传送进度。
+传送完毕后，输入 C ，即 connect 命令，回到u-boot的串口界面。
+使用u-boot命令，启动内核。
+完毕！
+

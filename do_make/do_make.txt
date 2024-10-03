@@ -1,0 +1,66 @@
+# 2016 ver 
+# make ARCH=arm mx6ull_14x14_evk_nand_defconfig
+# PERFIX=/opt/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin
+# make -j4 ARCH=arm CROSS_COMPILE=$PERFIX/arm-linux-gnueabihf-
+
+CROSS_COMPILE=/opt/gcc-linaro-12.2.1-2022.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+
+// mx6ull_14x14_evk_plugin_defconfig
+
+1> make mx6ull_14x14_evk_defconfig
+
+2> make menuconfig
+
+3> make -j16
+
+
+CONFIG_DM_SERIAL=y
+
+
+// compiler fw_setenv
+make envtools
+
+make envtools LDFLAGS=-static		// 不能静态编译，该编译出来的是动态编译
+
+make envtools EXTRA_LDFLAGS=-static
+
+
+sudo dd if=/home/lsb/Desktop/imx-2023/u-boot-fslc/u-boot-dtb.imx of=/dev/sdb bs=1024 seek=1 conv=fsync
+
+
+sudo dd if=./u-boot-dtb.imx of=/dev/sdb bs=1024 seek=1 conv=fsync
+
+
+compiler: cross compiler set for ARCH and CROSS_COMPILE
+
+sudo dd if=/home/lsb/Desktop/imx-2023/u-boot-fslc/u-boot-dtb.imx of=/dev/sdb bs=1024 seek=1 conv=fsync
+
+
+
+ARCH = arm
+CROSS_COMPILE = /data/lishengbin/.tmp/gcc-linaro-12.2.1-2022.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+# 2016 ver 
+# make ARCH=arm mx6ull_14x14_evk_nand_defconfig
+# PERFIX=/opt/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin
+# make -j4 ARCH=arm CROSS_COMPILE=$PERFIX/arm-linux-gnueabihf-
+
+
+#make mx6ull_14x14_evk_emmc_defconfig
+#Symbol: DEFAULT_DEVICE_TREE [=imx6ull-14x14-evk-emmc] 
+
+1> make mx6ull_14x14_evk_nand_defconfig
+#Symbol: DEFAULT_DEVICE_TREE [=imx6ull-14x14-evk-gpmi-weim]
+
+2> make menuconfig
+
+3> make -j16
